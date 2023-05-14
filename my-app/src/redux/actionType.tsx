@@ -1,0 +1,5 @@
+export const FORM_SUBMIT = 'FORM_SUBMIT';
+
+export const CONTACT_DELETE = 'CONTACT_DELETED';
+
+export const CONTACT_EDIT = 'CONTACT_EDIT';
