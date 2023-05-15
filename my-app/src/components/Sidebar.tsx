@@ -10,12 +10,12 @@ export default function Sidebar() {
         <div className="flex">
             <div style={{
                 background: "linear-gradient(to right bottom, #4a8deb, #815eb7, #cb53b1, #f771a2, #ff8c8c)"
-            }} className="flex flex-col h-screen p-3 bg-white shadow w-60">
+            }} className="flex flex-col  p-3 bg-white shadow w-60">
                 <div className="">
-                    <div className="flex items-center">
+                    <div style={{position:"fixed"}} className="flex items-center">
                         <h2 className="text-xl font-bold">Dashboard</h2>
                     </div>
-                    <div className="flex-1">
+                    <div style={{ position:"fixed", marginTop:"30px"}} className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li className="rounded-sm">
                                 <Link to={"/"}

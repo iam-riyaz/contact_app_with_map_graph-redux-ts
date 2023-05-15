@@ -1,4 +1,4 @@
-
+import {Link} from "react-router-dom"
 export const Empty=()=>{
     return(
         <>
@@ -43,7 +43,7 @@ export const Empty=()=>{
       No Data
     </h1>
 
-    <p className="mt-4 text-gray-500">Add new data: press +ADD </p>
+    <p className="mt-4 text-gray-500">Add new data: CLICK <Link to={"/contact"}> <span style={{color: "blue",fontWeight:"bold" , cursor:"pointer"}}> +ADD</span></Link> </p>
   </div>
 </div>
         </>
