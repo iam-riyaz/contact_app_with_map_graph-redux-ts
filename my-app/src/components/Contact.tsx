@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { contactEdit, formSubmit } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,76 +11,63 @@ interface FormData {
 }
 
 export default function Contact() {
-
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
     status: "",
   });
-  const editIndex = localStorage.getItem("editIndex");
-  
-  
-  useEffect(()=>{
-     if(editIndex)
-     {
-      const data=store.getState().formData.list[Number(editIndex)]
-      setFormData(data)
-     }
-  },[])
- 
 
+  // checking whether the form is in edit mode or new createion mode
+  const editIndex = localStorage.getItem("editIndex");
+
+  useEffect(() => {
+    if (editIndex) {
+      const data = store.getState().formData.list[Number(editIndex)];
+      setFormData(data);
+    }
+  }, []);
 
   const dispatch = useDispatch();
+
+
+//  handle submit fucntion to save form data and save in redux store using dispatch
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("your contact has been saved successfully");
-    if(!editIndex)
-    {
-
+    if (!editIndex) {
       dispatch(formSubmit(formData));
-    }
-    else{
-      const index= Number(editIndex);
+    } else {
+      const index = Number(editIndex);
 
-      console.log(".......",{formData})
-      dispatch(contactEdit(index,formData))
+      console.log(".......", { formData });
+      dispatch(contactEdit(index, formData));
     }
     navigate("/");
 
-    // console.log({formData})
+    
     const data = store.getState();
     console.log(data);
-
-    
-
   };
 
+  //handle change function to save state of every input changes
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => {
-   
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
-  console.log(formData)
+  console.log(formData);
 
   const navigate = useNavigate();
 
-
-
-  // if (editIndex) {
-  //   const editData = store.getState().formData.list[Number(editIndex)];
-
-  //   setFormData(editData);
-  // }
-
   return (
     <>
+    
       <button
         type="button"
         onClick={() => {
@@ -105,7 +92,6 @@ export default function Contact() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
-              
                 htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
@@ -113,9 +99,9 @@ export default function Contact() {
               </label>
               <div className="mt-2">
                 <input
-                style={{fontSize:"18px", padding:"6px"}}
-                 placeholder="First Name"
-                defaultValue={formData.firstName }
+                  style={{ fontSize: "18px", padding: "6px" }}
+                  placeholder="First Name"
+                  defaultValue={formData.firstName}
                   onChange={handleChange}
                   id="firstName"
                   name="firstName"
@@ -135,9 +121,9 @@ export default function Contact() {
               </label>
               <div className="mt-2">
                 <input
-                style={{fontSize:"18px", padding:"6px"}}
-                placeholder="Last Name"
-                defaultValue={formData.lastName}
+                  style={{ fontSize: "18px", padding: "6px" }}
+                  placeholder="Last Name"
+                  defaultValue={formData.lastName}
                   onChange={handleChange}
                   id="lastName"
                   name="lastName"
@@ -157,9 +143,9 @@ export default function Contact() {
               </label>
               <div className="mt-2">
                 <input
-                style={{fontSize:"18px", padding:"6px"}}
-                placeholder="Email"
-                defaultValue={formData.email}
+                  style={{ fontSize: "18px", padding: "6px" }}
+                  placeholder="Email"
+                  defaultValue={formData.email}
                   onChange={handleChange}
                   id="email"
                   name="email"
@@ -179,9 +165,9 @@ export default function Contact() {
               </label>
               <div className="mt-2">
                 <select
-                style={{fontSize:"18px", padding:"6px"}}
-                placeholder="Select"
-                defaultValue={formData.status}
+                  style={{ fontSize: "18px", padding: "6px" }}
+                  placeholder="Select"
+                  defaultValue={formData.status}
                   onChange={handleChange}
                   id="status"
                   name="status"
@@ -206,8 +192,6 @@ export default function Contact() {
           </form>
         </div>
       </div>
-
-      
     </>
   );
 }

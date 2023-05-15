@@ -5,18 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { contactDelete } from "../redux/action";
 import { Empty } from "./Empty";
 
-// import {store} from "../redux/store"
+
 
 export default function () {
   const myData = useSelector(() => store.getState().formData.list);
   console.log({ myData });
 
-  // useEffect(()=>{
-
-  //     let data= store.getState()
-  //     console.log(data.formData.list)
-
-  // })
+  
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

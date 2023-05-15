@@ -9,6 +9,7 @@ import { AllDetail } from "./AllDetail"
 export const AllRoutes=()=>{
     return(
         <>
+        {/* these are the All routes presenet in our app */}
         <Routes>
             <Route path="/" element={<List/>}/>
             <Route path="/contact" element={<Contact/>}/>

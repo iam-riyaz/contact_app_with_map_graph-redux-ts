@@ -5,17 +5,18 @@ import {Link} from "react-router-dom"
 import Contact from "./Contact";
 import List from "./List";
 
+
 export default function Sidebar() {
     return (
         <div className="flex">
             <div style={{
                 background: "linear-gradient(to right bottom, #4a8deb, #815eb7, #cb53b1, #f771a2, #ff8c8c)"
-            }} className="flex flex-col  p-3 bg-white shadow w-60">
+            }} className="flex flex-col min-h-screen p-3 bg-white shadow w-60">
                 <div className="">
                     <div style={{position:"fixed"}} className="flex items-center">
                         <h2 className="text-xl font-bold">Dashboard</h2>
                     </div>
-                    <div style={{ position:"fixed", marginTop:"30px"}} className="flex-1">
+                    <div style={{position:"fixed", marginTop:"30px"}} className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li className="rounded-sm">
                                 <Link to={"/"}
@@ -67,8 +68,9 @@ export default function Sidebar() {
                 </div>
             </div>
             <div style={{ margin:"0px", paddingTop:"20px", background: " linear-gradient(to left top, #dce8f9, #e7e5f6, #efe4f0, #f2e3e9, #f2e4e4)"}} className="container mx-auto mt-12">
-            
+            {/* every this apart form the sidebar will appear here and change based on clicks, and navigation */}
                     <AllRoutes/>
+                
                 
             </div>
         </div>
